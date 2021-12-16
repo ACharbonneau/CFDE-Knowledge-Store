@@ -1,7 +1,7 @@
 title: CFDE Knowledge Store
 subtitle: "Common Fund Data Ecosystem"
 description: A demo site for exploring CFDE information.
-#share: "HTML Reference: a free guide to all HTML elements and attributes."
+share: "HTML Reference: a free guide to all HTML elements and attributes."
 url: https://acharbonneau.github.io/CFDE-Knowledge-Store/
 markdown: kramdown
 permalink: pretty
