@@ -2,6 +2,13 @@
 layout: single
 elementName: a
 ---
+window.addEventListener('load', function() {
+	let message = { height: document.body.scrollHeight, width: document.body.scrollWidth };	
+
+	// window.top refers to parent window
+	window.top.postMessage(message, "*");
+});
+
 
 <section id="ACE2" class="element">
   <header class="element-header">
@@ -30,10 +37,21 @@ elementName: a
 
     </div>
   </header>
-      <div id="UCSC">
-      <div id="a-example-0" class="example">
-        <iframe src="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chrX%3A15557039%2D15607236&hgsid=1238870027_VgLyrNsaaQBCLNMsTy0o4lqzapgq"
-                </iframe>
+  
+<iframe src="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chrX%3A15557039%2D15607236&hgsid=1238870027_VgLyrNsaaQBCLNMsTy0o4lqzapgq" id="child-iframe"></iframe>
+
+<script>
+	let iframe = document.querySelector("#child-iframe");
+
+	window.addEventListener('message', function(e) {
+		// message that was passed from iframe page
+		let message = e.data;
+
+		iframe.style.height = message.height + 'px';
+		iframe.style.width = message.width + 'px';
+	} , false);
+</script>
+  
         <p class="example-label">
           <strong>Location:</strong>
           <a class="example-clipboard" data-tooltip="Click to copy code" data-clipboard-target="#a-example-0-code">Copy</a>
